@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echo Computer</title>
+    <style>
+        html, body {
+            height: 100%; /* Ensure the html and body elements cover the entire viewport height */
+            margin: 0; /* Remove default margin */
+        }
+        body {
+            background-image: url('background.jpeg'); /* Use 'background.png' if your image is a PNG file */
+            background-size: cover; /* Make sure the background image covers the entire viewport */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-position: center; /* Center the image */
+            display: flex; /* Use flexbox to center the content */
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            text-align: center; /* Center text */
+            position: relative; /* Ensure the body can position absolute elements */
+        }
+        .folderIcon {
+            position: absolute; /* Position the icon absolutely */
+            top: 100px; /* Distance from the top of the page */
+            right: 80px; /* Distance from the right of the page */
+            text-align: center; /* Center text under the icon */
+            cursor: pointer;
+        }
+        .folderIcon img {
+            width: 80px; /* Adjust the size of the icon */
+            height: 80px; /* Adjust the size of the icon */
+        }
+        .folderIcon p {
+            margin: 0; /* Remove margin around the text */
+            color: black; /* Set text color to black */
+            font-size: 18px; /* Adjust font size */
+        }
+        
+        .popup {
+            display: none; /* Hide the popup by default */
+            position: fixed; /* Position the popup relative to the viewport */
+            top: 30%; /* Center the popup vertically */
+            left: 50%; /* Center the popup horizontally */
+            transform: translate(-50%, -50%); /* Offset the popup to truly center it */
+            background-color: white; /* Background color of the popup */
+            padding: 0; /* No padding, the iframe will fill the popup */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow for better visibility */
+            z-index: 1000; /* Ensure the popup is on top of other elements */
+            border-radius: 8px;
+            width: 70%;
+        }
+        .popup .close-btn {
+            cursor: pointer; /* Change cursor to pointer on hover */
+            background-color: red;
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            margin: 10px;
+        }
+        .trashPopup {
+            display: none; /* Hide the popup by default */
+            position: fixed; /* Position the popup relative to the viewport */
+            top: 35%; /* Center the popup vertically */
+            left: 41%; /* Center the popup horizontally */
+            transform: translate(-50%, -50%); /* Offset the popup to truly center it */
+            background-color: white; /* Background color of the popup */
+            padding: 0; /* No padding, the iframe will fill the popup */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow for better visibility */
+            z-index: 1000; /* Ensure the popup is on top of other elements */
+            border-radius: 8px;
+            width: 60%;
+        }
+        .trashPopup .close-btn {
+            cursor: pointer; /* Change cursor to pointer on hover */
+            background-color: red;
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            margin: 10px;
+        }
+        .top-bar {
+            background-color: pink;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+        .filesWindow {
+            height: 200px;
+            justify-content: left;
+            align-items: start;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            padding: 10px;
+        }
+
+        .filesWindow ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0; /* Remove default padding */
+            margin-left: 20px; /* Remove default margin */
+            text-align: left; /* Left-align the text */
+            font-family: Arial, sans-serif; /* Change font family */
+        }
+
+        .filesWindow li {
+            margin: 5px 0; /* Add vertical spacing between list items */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+
+        .trashWindow {
+            height: 200px;
+            justify-content: left;
+            align-items: start;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            padding: 10px;
+        }
+
+        .trashWindow ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0; /* Remove default padding */
+            margin-left: 20px; /* Remove default margin */
+            text-align: left; /* Left-align the text */
+            font-family: Arial, sans-serif; /* Change font family */
+        }
+
+        .trashWindow li {
+            margin: 5px 0; /* Add vertical spacing between list items */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+        .todo-popup {
+            display: none; /* Hide the popup by default */
+            position: fixed; /* Position the popup relative to the viewport */
+            top: 30%; /* Center the popup vertically */
+            left: 40%; /* Center the popup horizontally */
+            transform: translate(-50%, -50%); /* Offset the popup to truly center it */
+            background-color: white; /* Background color of the popup */
+            padding: 0; /* No padding, the iframe will fill the popup */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow for better visibility */
+            z-index: 1000; /* Ensure the popup is on top of other elements */
+            border-radius: 8px;
+            width: 40%;
+            height: 50%;
+        }
+        .todo-popup .close-btn {
+            cursor: pointer; /* Change cursor to pointer on hover */
+            background-color: red;
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            margin: 10px;
+        }
+        .todo-popup .top-bar {
+            background-color: pink;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .report-popup {
+            display: none; /* Hide the popup by default */
+            position: fixed; /* Position the popup relative to the viewport */
+            top: 50%; /* Center the popup vertically */
+            left: 40%; /* Center the popup horizontally */
+            transform: translate(-50%, -50%); /* Offset the popup to truly center it */
+            background-color: white; /* Background color of the popup */
+            padding: 0; /* No padding, the iframe will fill the popup */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow for better visibility */
+            z-index: 1000; /* Ensure the popup is on top of other elements */
+            border-radius: 8px;
+            width: 50%;
+            height: 70%;
+        }
+        .report-popup .close-btn {
+            cursor: pointer; /* Change cursor to pointer on hover */
+            background-color: red;
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            margin: 10px;
+        }
+        .report-popup .top-bar {
+            background-color: pink;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .trashIcon {
+            position: absolute; /* Position the icon absolutely */
+            top: 400px; /* Distance from the top of the page */
+            right: 80px; /* Distance from the right of the page */
+            text-align: center; /* Center text under the icon */
+            cursor: pointer;
+        }
+        .trashIcon img {
+            width: 80px; /* Adjust the size of the icon */
+            height: 80px; /* Adjust the size of the icon */
+        }
+        .trashIcon p {
+            margin: 0; /* Remove margin around the text */
+            color: black; /* Set text color to black */
+            font-size: 18px; /* Adjust font size */
+        }
+    </style>
+</head>
+<body>
+    <div class="folderIcon" onclick="togglePopup()">
+        <img src="folderIcon.png" alt="Folder Icon">
+        <p>Files</p>
+    </div>
+
+    <div class="trashIcon" onclick="toggleTrashPopup()">
+        <img src="trashIcon.png" alt="Trash Icon">
+        <p>Trash</p>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="top-bar">
+            <div class="close-btn" onclick="togglePopup()"></div>
+            <div><p>Files</p></div>
+        </div>
+        <div class="filesWindow">
+            <ul>
+                <li>Random-File.txt</li>
+                <li onclick="toggleTodoPopup()">ToDo-List.txt</li>
+                <li>Other-File.txt</li>
+                <li>Another-File.txt</li>
+                <li>Text.txt</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="trashPopup" id="trashPopup">
+        <div class="top-bar">
+            <div class="close-btn" onclick="toggleTrashPopup()"></div>
+            <div><p>Trash</p></div>
+        </div>
+        <div class="trashWindow">
+            <ul>
+                <li>Random-File.txt</li>
+                <li>Other-File.txt</li>
+                <li  onclick="toggleReportPopup()">Silencer Report FIRST DRAFT UNFINISHED.txt</li>
+                <li>Text.txt</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="todo-popup" id="todo-popup">
+        <div class="top-bar">
+            <div class="close-btn" onclick="toggleTodoPopup()"></div>
+            <div><p>ToDo-List.txt</p></div>
+        </div>
+        <iframe src="todoList.html" width="100%" height="100%" style="border: none;"></iframe>
+    </div>
+
+    <div class="report-popup" id="report-popup">
+        <div class="top-bar">
+            <div class="close-btn" onclick="toggleReportPopup()"></div>
+            <div><p>Silencer Report FIRST DRAFT UNFINISHED.txt</p></div>
+        </div>
+        <iframe src="silencerReport.html" width="100%" height="100%" style="border: none;"></iframe>
+    </div>
+
+    <script>
+        function togglePopup() {
+            var popup = document.getElementById("popup");
+            popup.style.display = popup.style.display === "none" || popup.style.display === "" ? "block" : "none";
+        }
+
+        function toggleTodoPopup() {
+            var todoPopup = document.getElementById("todo-popup");
+            todoPopup.style.display = todoPopup.style.display === "none" || todoPopup.style.display === "" ? "block" : "none";
+        }
+
+        function toggleTrashPopup() {
+            var trashPopup = document.getElementById("trashPopup");
+            trashPopup.style.display = trashPopup.style.display === "none" || trashPopup.style.display === "" ? "block" : "none";
+        }
+
+        function toggleReportPopup() {
+            var reportPopup = document.getElementById("report-popup");
+            reportPopup.style.display = reportPopup.style.display === "none" || reportPopup.style.display === "" ? "block" : "none";
+        }
+
+    </script>
+</body>
+</html>
