@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Background Image with Clickable Icon</title>
+    <title>Login Page</title>
     <style>
         html, body {
             height: 100%; /* Ensure the html and body elements cover the entire viewport height */
@@ -19,149 +17,74 @@
             align-items: center; /* Center content vertically */
             text-align: center; /* Center text */
             position: relative; /* Ensure the body can position absolute elements */
+            flex-direction: column;
         }
-        .folderIcon {
-            position: absolute; /* Position the icon absolutely */
-            top: 100px; /* Distance from the top of the page */
-            right: 80px; /* Distance from the right of the page */
-            text-align: center; /* Center text under the icon */
-            cursor: pointer;
-        }
-        .folderIcon img {
-            width: 80px; /* Adjust the size of the icon */
-            height: 80px; /* Adjust the size of the icon */
-        }
-        .folderIcon p {
-            margin: 0; /* Remove margin around the text */
-            color: black; /* Set text color to black */
-            font-size: 18px; /* Adjust font size */
-        }
-        
-        .popup {
-            display: none; /* Hide the popup by default */
-            position: fixed; /* Position the popup relative to the viewport */
-            top: 30%; /* Center the popup vertically */
-            left: 50%; /* Center the popup horizontally */
-            transform: translate(-50%, -50%); /* Offset the popup to truly center it */
-            background-color: white; /* Background color of the popup */
-            padding: 0; /* No padding, the iframe will fill the popup */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow for better visibility */
-            z-index: 1000; /* Ensure the popup is on top of other elements */
-            border-radius: 8px;
-            width: 70%;
-        }
-        .popup .close-btn {
-            cursor: pointer; /* Change cursor to pointer on hover */
-            background-color: red;
-            width: 15px;
-            height: 15px;
-            border-radius: 100%;
-            margin: 10px;
-        }
-        .top-bar {
-            background-color: pink;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: start;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-        .filesWindow {
+        .image-container {
+            width: 200px;
             height: 200px;
-            justify-content: left;
-            align-items: start;
-            display: flex;
-            flex-direction: column; /* Stack items vertically */
+            border-radius: 50%;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: center;
+        }
+        .greeting p {
+            font-family: 'Arial', sans-serif; /* Choose your desired font */
+            font-size: 24px; /* Set the desired font size */
+            color: black; /* Set the desired text color, e.g., tomato color */
+            margin-top: 20px; /* Add some space between the image and text */
+            text-transform: uppercase; /* Optional: make the text uppercase */
+            letter-spacing: 2px; /* Optional: add some letter spacing */
+        }
+        .password-input {
+            margin-top: 10px;
+        }
+        .password-input input {
+            font-size: 16px;
             padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            color: #ccc; /* Default text color (gray) */
         }
-
-        .filesWindow ul {
-            list-style-type: none; /* Remove bullet points */
-            padding: 0; /* Remove default padding */
-            margin-left: 20px; /* Remove default margin */
-            text-align: left; /* Left-align the text */
-            font-family: Arial, sans-serif; /* Change font family */
+        .password-input input:focus {
+            color: #000; /* Change text color to black when focused */
         }
-
-        .filesWindow li {
-            margin: 5px 0; /* Add vertical spacing between list items */
-            cursor: pointer; /* Change cursor to pointer on hover */
-        }
-        .todo-popup {
-            display: none; /* Hide the popup by default */
-            position: fixed; /* Position the popup relative to the viewport */
-            top: 30%; /* Center the popup vertically */
-            left: 40%; /* Center the popup horizontally */
-            transform: translate(-50%, -50%); /* Offset the popup to truly center it */
-            background-color: white; /* Background color of the popup */
-            padding: 0; /* No padding, the iframe will fill the popup */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow for better visibility */
-            z-index: 1000; /* Ensure the popup is on top of other elements */
-            border-radius: 8px;
-            width: 40%;
-            height: 50%;
-        }
-        .todo-popup .close-btn {
-            cursor: pointer; /* Change cursor to pointer on hover */
-            background-color: red;
-            width: 15px;
-            height: 15px;
-            border-radius: 100%;
-            margin: 10px;
-        }
-        .todo-popup .top-bar {
-            background-color: pink;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: start;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
+        .error-message {
+            color: red;
+            margin-top: 10px;
+            display: none; /* Initially hide the error message */
         }
     </style>
 </head>
 <body>
-    <div class="folderIcon" onclick="togglePopup()">
-        <img src="folderIcon.png" alt="Folder Icon">
-        <p>Files</p>
+    <div class="image-container">
+        <img src="echoGraduation.png" alt="Echo Graduation">
     </div>
-
-    <div class="popup" id="popup">
-        <div class="top-bar">
-            <div class="close-btn" onclick="togglePopup()"></div>
-            <div><p>Files</p></div>
-        </div>
-        <div class="filesWindow">
-            <ul>
-                <li>Random-File.txt</li>
-                <li onclick="toggleTodoPopup()">ToDo-List.txt</li>
-                <li>Other-File.txt</li>
-                <li>Another-File.txt</li>
-                <li>Text.txt</li>
-            </ul>
-        </div>
+    <div class="greeting">
+        <p>Echo Lee</p>
     </div>
-
-    <div class="todo-popup" id="todo-popup">
-        <div class="top-bar">
-            <div class="close-btn" onclick="toggleTodoPopup()"></div>
-            <div><p>ToDo-List.txt</p></div>
-        </div>
-        <iframe src="todoList.html" width="100%" height="100%" style="border: none;"></iframe>
+    <div class="password-input">
+        <input type="password" id="password" placeholder="Password" onkeypress="checkPassword(event)">
+        <div class="error-message" id="error-message">Incorrect password</div>
     </div>
-
     <script>
-        function togglePopup() {
-            var popup = document.getElementById("popup");
-            popup.style.display = popup.style.display === "none" || popup.style.display === "" ? "block" : "none";
-        }
-
-        function toggleTodoPopup() {
-            var todoPopup = document.getElementById("todo-popup");
-            todoPopup.style.display = todoPopup.style.display === "none" || todoPopup.style.display === "" ? "block" : "none";
+        function checkPassword(event) {
+            if (event.key === 'Enter') {
+                var password = document.getElementById('password').value;
+                var errorMessage = document.getElementById('error-message');
+                if (password.toLowerCase().includes('carnation')) {
+                    window.location.href = 'desktop.html';
+                } else {
+                    document.getElementById('password').value = ''; // Reset the text box
+                    errorMessage.style.display = 'block'; // Show the error message
+                }
+            }
         }
     </script>
 </body>
 </html>
-
