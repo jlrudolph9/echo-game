@@ -339,6 +339,13 @@
     </div>
 
     <script>
+        var tristanEmailRead = sessionStorage.getItem("TristanEmail") === "1";
+        var damianEmailRead = sessionStorage.getItem("DamianEmail") === "1";
+
+        if (tristanEmailRead && damianEmailRead) {
+            window.location.href = 'desktop-finished.html';
+        }
+        
         function togglePopup() {
             var popup = document.getElementById("popup");
             popup.style.display = popup.style.display === "none" || popup.style.display === "" ? "block" : "none";
@@ -347,6 +354,11 @@
         function toggleEmailPopup() {
             var emailPopup = document.getElementById("emailPopup");
             emailPopup.style.display = emailPopup.style.display === "none" || emailPopup.style.display === "" ? "block" : "none";
+
+            if (emailPopup.style.display === "none") {
+                // Redirect to desktop.html to reload the page and update sessionStorage variables
+                window.location.href = 'desktop.html';
+            }
         }
 
         function toggleTodoPopup() {
