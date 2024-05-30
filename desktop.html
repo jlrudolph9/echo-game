@@ -22,8 +22,8 @@
         }
         .folderIcon {
             position: absolute; /* Position the icon absolutely */
-            top: 100px; /* Distance from the top of the page */
-            right: 80px; /* Distance from the right of the page */
+            top: 10%; /* Distance from the top of the page */
+            right: 10%; /* Distance from the right of the page */
             text-align: center; /* Center text under the icon */
             cursor: pointer;
         }
@@ -58,6 +58,56 @@
             border-radius: 100%;
             margin: 10px;
         }
+
+        .emailIcon {
+            position: absolute; /* Position the icon absolutely */
+            top: 30%; /* Distance from the top of the page */
+            right: 10%; /* Distance from the right of the page */
+            text-align: center; /* Center text under the icon */
+            cursor: pointer;
+        }
+        .emailIcon img {
+            width: 80px; /* Adjust the size of the icon */
+            height: 80px; /* Adjust the size of the icon */
+        }
+        .emailIcon p {
+            margin: 0; /* Remove margin around the text */
+            color: black; /* Set text color to black */
+            font-size: 18px; /* Adjust font size */
+        }
+        
+        .emailPopup {
+            display: none; /* Hide the popup by default */
+            position: fixed; /* Position the popup relative to the viewport */
+            top: 45%; /* Center the popup vertically */
+            left: 50%; /* Center the popup horizontally */
+            transform: translate(-50%, -50%); /* Offset the popup to truly center it */
+            background-color: white; /* Background color of the popup */
+            padding: 0; /* No padding, the iframe will fill the popup */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow for better visibility */
+            z-index: 1000; /* Ensure the popup is on top of other elements */
+            border-radius: 8px;
+            width: 80%;
+            height: 80%;
+        }
+        .emailPopup .close-btn {
+            cursor: pointer; /* Change cursor to pointer on hover */
+            background-color: red;
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            margin: 10px;
+        }
+        .emailPopup .top-bar {
+            background-color: #9a77b5;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
         .trashPopup {
             display: none; /* Hide the popup by default */
             position: fixed; /* Position the popup relative to the viewport */
@@ -131,6 +181,8 @@
             margin: 5px 0; /* Add vertical spacing between list items */
             cursor: pointer; /* Change cursor to pointer on hover */
         }
+
+
         .todo-popup {
             display: none; /* Hide the popup by default */
             position: fixed; /* Position the popup relative to the viewport */
@@ -197,8 +249,8 @@
 
         .trashIcon {
             position: absolute; /* Position the icon absolutely */
-            top: 400px; /* Distance from the top of the page */
-            right: 80px; /* Distance from the right of the page */
+            top: 70%; /* Distance from the top of the page */
+            right: 10%; /* Distance from the right of the page */
             text-align: center; /* Center text under the icon */
             cursor: pointer;
         }
@@ -217,6 +269,12 @@
     <div class="folderIcon" onclick="togglePopup()">
         <img src="folderIcon.png" alt="Folder Icon">
         <p>Files</p>
+    </div>
+
+    <div class="emailIcon" onclick="toggleEmailPopup()">
+    <img src="emailIcon.png" alt = "Email Icon">
+    <p>Email</p>
+
     </div>
 
     <div class="trashIcon" onclick="toggleTrashPopup()">
@@ -239,6 +297,15 @@
             </ul>
         </div>
     </div>
+
+    <div class="emailPopup" id="emailPopup">
+        <div class="top-bar">
+            <div class="close-btn" onclick="toggleEmailPopup()"></div>
+            <p>Email</p>
+        </div>
+        <iframe src="email.html" width="100%" height="100%" style="border: none;"></iframe>
+    </div>
+
 
     <div class="trashPopup" id="trashPopup">
         <div class="top-bar">
@@ -275,6 +342,11 @@
         function togglePopup() {
             var popup = document.getElementById("popup");
             popup.style.display = popup.style.display === "none" || popup.style.display === "" ? "block" : "none";
+        }
+
+        function toggleEmailPopup() {
+            var emailPopup = document.getElementById("emailPopup");
+            emailPopup.style.display = emailPopup.style.display === "none" || emailPopup.style.display === "" ? "block" : "none";
         }
 
         function toggleTodoPopup() {
