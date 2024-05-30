@@ -120,6 +120,7 @@
             z-index: 1000; /* Ensure the popup is on top of other elements */
             border-radius: 8px;
             width: 60%;
+            height: 30%;
         }
         .trashPopup .close-btn {
             cursor: pointer; /* Change cursor to pointer on hover */
@@ -227,7 +228,7 @@
             z-index: 1000; /* Ensure the popup is on top of other elements */
             border-radius: 8px;
             width: 50%;
-            height: 70%;
+            height: 80%;
         }
         .report-popup .close-btn {
             cursor: pointer; /* Change cursor to pointer on hover */
@@ -238,6 +239,38 @@
             margin: 10px;
         }
         .report-popup .top-bar {
+            background-color: pink;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        .damian-popup {
+            display: none; /* Hide the popup by default */
+            position: fixed; /* Position the popup relative to the viewport */
+            top: 48%; /* Center the popup vertically */
+            left: 46%; /* Center the popup horizontally */
+            transform: translate(-50%, -50%); /* Offset the popup to truly center it */
+            background-color: white; /* Background color of the popup */
+            padding: 0; /* No padding, the iframe will fill the popup */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a shadow for better visibility */
+            z-index: 1000; /* Ensure the popup is on top of other elements */
+            border-radius: 8px;
+            width: 54%;
+            height: 80%;
+        }
+        .damian-popup .close-btn {
+            cursor: pointer; /* Change cursor to pointer on hover */
+            background-color: red;
+            width: 15px;
+            height: 15px;
+            border-radius: 100%;
+            margin: 10px;
+        }
+        .damian-popup .top-bar {
             background-color: pink;
             height: 40px;
             display: flex;
@@ -314,10 +347,8 @@
         </div>
         <div class="trashWindow">
             <ul>
-                <li>Random-File.txt</li>
-                <li>Other-File.txt</li>
+                <li  onclick="toggleDamianPopup()">Damian Apology Email DRAFT.txt</li>
                 <li  onclick="toggleReportPopup()">Silencer Report FIRST DRAFT UNFINISHED.txt</li>
-                <li>Text.txt</li>
             </ul>
         </div>
     </div>
@@ -338,6 +369,14 @@
         <iframe src="silencerReport.html" width="100%" height="100%" style="border: none;"></iframe>
     </div>
 
+    <div class="damian-popup" id="damian-popup">
+        <div class="top-bar">
+            <div class="close-btn" onclick="toggleDamianPopup()"></div>
+            <div><p>Damian Apology Email DRAFT.txt</p></div>
+        </div>
+        <iframe src="damianTrash.html" width="100%" height="100%" style="border: none;"></iframe>
+    </div>
+
     <script>
         var tristanEmailRead = sessionStorage.getItem("TristanEmail") === "1";
         var damianEmailRead = sessionStorage.getItem("DamianEmail") === "1";
@@ -345,7 +384,7 @@
         if (tristanEmailRead && damianEmailRead) {
             window.location.href = 'desktop-finished.html';
         }
-        
+
         function togglePopup() {
             var popup = document.getElementById("popup");
             popup.style.display = popup.style.display === "none" || popup.style.display === "" ? "block" : "none";
@@ -376,6 +415,12 @@
             reportPopup.style.display = reportPopup.style.display === "none" || reportPopup.style.display === "" ? "block" : "none";
         }
 
+        function toggleDamianPopup() {
+            var damianPopup = document.getElementById("damian-popup");
+            damianPopup.style.display = damianPopup.style.display === "none" || damianPopup.style.display === "" ? "block" : "none";
+        }
+
     </script>
 </body>
 </html>
+
