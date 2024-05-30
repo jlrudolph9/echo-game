@@ -1,1 +1,95 @@
-<h1>Hello world!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 4 Simulator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .iphone {
+            width: 320px;
+            height: 480px;
+            border: 16px solid black;
+            border-radius: 36px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            background-color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        .screen {
+            width: 100%;
+            height: 100%;
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .lockscreen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .swipe-button {
+            background-color: #007aff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .key {
+            background-color: #007aff;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="iphone">
+        <div class="screen lockscreen" id="lockscreen">
+            <button class="swipe-button" onclick="unlock()">Swipe to Unlock</button>
+        </div>
+        <div class="screen keypad-screen" id="keypad-screen">
+            <div class="keypad">
+                <div class="key">1</div>
+                <div class="key">2</div>
+                <div class="key">3</div>
+                <div class="key">4</div>
+                <div class="key">5</div>
+                <div class="key">6</div>
+                <div class="key">7</div>
+                <div class="key">8</div>
+                <div class="key">9</div>
+                <div class="key">*</div>
+                <div class="key">0</div>
+                <div class="key">#</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function unlock() {
+            document.getElementById('lockscreen').style.display = 'none';
+            document.getElementById('keypad-screen').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
