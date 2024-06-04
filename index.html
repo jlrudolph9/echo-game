@@ -1,95 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Echo's Phone</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-        }
-        .iphone {
-            width: 250px;
-            height: 480px;
-            border: 16px solid black;
-            border-radius: 36px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            background-color: white;
-            overflow: hidden;
-            position: relative;
-        }
-        .screen {
-            width: 100%;
-            height: 100%;
-            display: none;
-            background-color: #fff;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-        .lockscreen {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .swipe-button {
-            background-color: #007aff;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: none;
-            cursor: pointer;
-        }
-        .keypad {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-        .key {
-            background-color: #007aff;
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-    <div class="iphone">
-        <div class="screen lockscreen" id="lockscreen">
-            <button class="swipe-button" onclick="unlock()">Swipe to Unlock</button>
-        </div>
-        <div class="screen keypad-screen" id="keypad-screen">
-            <div class="keypad">
-                <div class="key">1</div>
-                <div class="key">2</div>
-                <div class="key">3</div>
-                <div class="key">4</div>
-                <div class="key">5</div>
-                <div class="key">6</div>
-                <div class="key">7</div>
-                <div class="key">8</div>
-                <div class="key">9</div>
-                <div class="key">*</div>
-                <div class="key">0</div>
-                <div class="key">#</div>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1440, maximum-scale=1.0" />
+    <meta name="og:type" content="website" />
+    <meta name="twitter:card" content="photo" />
+    <link rel="stylesheet" type="text/css" href="css/desktop-2.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
+    <link rel="stylesheet" type="text/css" href="css/globals.css" />
+  </head>
+  <body style="margin: 0; background: #ffffff">
+    <input type="hidden" id="anPageName" name="page" value="desktop-2" />
+    <div class="container-center-horizontal">
+      <div class="desktop-2 screen">
+        <div class="passcode">
+          <img class="component-1-1" src="img/component-2.svg" alt="Component 1" />
+          <div class="overlap-group">
+            <h1 class="title inter-light-white-32px">Enter Passcode</h1>
+            <div class="ellipse-container">
+              <div class="ellipse-1"></div>
+              <div class="ellipse-1"></div>
+              <div class="ellipse-1"></div>
+              <div class="ellipse-1"></div>
             </div>
+            <div class="component-container component-3">
+              <a href="#rectangle-8">
+                <div class="component"><div class="number inter-light-white-32px">1</div></div></a
+              ><a href="#rectangle-8">
+                <div class="component-1 component-3"><div class="number inter-light-white-32px">2</div></div></a
+              >
+              <div class="component-6 component-3"><div class="number inter-light-white-32px">3</div></div>
+            </div>
+            <div class="component-container-1 component-container-3">
+              <a href="#rectangle-8">
+                <div class="component-4 component-3"><div class="number inter-light-white-32px">4</div></div></a
+              ><a href="#rectangle-8">
+                <div class="component-1 component-3"><div class="number inter-light-white-32px">5</div></div></a
+              ><a href="#rectangle-8">
+                <div class="component-8 component-3"><div class="number inter-light-white-32px">6</div></div></a
+              >
+            </div>
+            <div class="component-container-2 component-container-3">
+              <div class="component-9 component-3"><div class="number inter-light-white-32px">7</div></div>
+              <div class="component-11 component-3"><div class="number inter-light-white-32px">8</div></div>
+              <a href="#rectangle-8">
+                <div class="component"><div class="number inter-light-white-32px">9</div></div></a
+              >
+            </div>
+            <a href="#rectangle-8">
+              <div class="component-2 component-3"><div class="number inter-light-white-32px">0</div></div></a
+            >
+            <div class="flex-row">
+              <div class="emergency">Emergency</div>
+              <div class="cancel">Cancel</div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
-
-    <script>
-        function unlock() {
-            document.getElementById('lockscreen').style.display = 'none';
-            document.getElementById('keypad-screen').style.display = 'flex';
-        }
-    </script>
-</body>
+  </body>
 </html>
