@@ -8,6 +8,11 @@
     <link rel="stylesheet" type="text/css" href="css/desktop-5.css" />
     <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
     <link rel="stylesheet" type="text/css" href="css/globals.css" />
+    <style>
+      .clickable {
+        cursor: pointer;
+      }
+    </style>
     <script>
       function playAudio(id) {
         var audio = document.getElementById(id);
@@ -41,14 +46,14 @@
             <div class="rectangle-20"></div>
             <div class="rectangle-22"></div>
             <div class="rectangle-23"></div>
-            <img class="vector-1" src="img/vector-1-1.svg" alt="Vector 1" />
-            <img class="vector-2" src="img/vector-2-1.svg" alt="Vector 2" />
-            <img class="vector-4" src="img/vector-4-1.svg" alt="Vector 4" />
+            <img class="vector-1 clickable" src="img/vector-1-1.svg" alt="Vector 1" onclick="playAudio('audio1')" />
+            <img class="vector-2 clickable" src="img/vector-2-1.svg" alt="Vector 2" onclick="playAudio('audio2')" />
+            <img class="vector-4 clickable" src="img/vector-4-1.svg" alt="Vector 4" onclick="playAudio('audio3')" />
             <div class="rectangle-21"></div>
             <div class="number">25</div>
-            <img class="icon-safari" src="img/---icon--safari-@2x.png" alt="icon &#34;Safari&#34;" />
-            <img class="vector" src="img/vector-5.svg" alt="Vector" onclick="playAudio('audio4')" />
-            <img class="vector-3" src="img/vector-3-1.svg" alt="Vector 3" onclick="playAudio('audio5')" />
+            <img class="icon-safari clickable" src="img/---icon--safari-@2x.png" alt="icon &#34;Safari&#34;" onclick="playAudio('audio4')" />
+            <img class="vector clickable" src="img/vector-5.svg" alt="Vector" onclick="playAudio('audio5')" />
+            <img class="vector-3 clickable" src="img/vector-3-1.svg" alt="Vector 3" onclick="playAudio('audio6')" />
             <div class="component-12 component-1">
               <div class="overlap-group">
                 <div class="rectangle-14"></div>
@@ -105,13 +110,13 @@
             <div class="phone-5 phone-7 inter-normal-black-16px">+1 (347) 521-8231</div>
             <div class="phone-6 phone-7 inter-normal-black-16px">+1 (347) 521-8231</div>
             <div class="voicemail-1">Voicemail</div>
-            <img class="vector-5" src="img/vector.svg" alt="Vector" onclick="playAudio('audio1')" />
-            <img class="vector-6" src="img/vector.svg" alt="Vector" onclick="playAudio('audio2')" />
-            <img class="vector-7" src="img/vector.svg" alt="Vector" onclick="playAudio('audio3')" />
-            <img class="vector-8" src="img/vector.svg" alt="Vector" onclick="playAudio('audio4')" />
-            <img class="vector-12" src="img/vector.svg" alt="Vector" onclick="playAudio('audio5')" />
-            <img class="vector-13" src="img/vector.svg" alt="Vector" onclick="playAudio('audio6')" />
-            <img class="vector-14" src="img/vector.svg" alt="Vector" onclick="playAudio('audio7')" />
+            <img class="vector-5 clickable" src="img/vector.svg" alt="Vector" onclick="playAudio('audio1')" />
+            <img class="vector-6 clickable" src="img/vector.svg" alt="Vector" onclick="playAudio('audio2')" />
+            <img class="vector-7 clickable" src="img/vector.svg" alt="Vector" onclick="playAudio('audio3')" />
+            <img class="vector-8 clickable" src="img/vector.svg" alt="Vector" onclick="playAudio('audio4')" />
+            <img class="vector-12 clickable" src="img/vector.svg" alt="Vector" onclick="playAudio('audio5')" />
+            <img class="vector-13 clickable" src="img/vector.svg" alt="Vector" onclick="playAudio('audio6')" />
+            <img class="vector-14 clickable" src="img/vector.svg" alt="Vector" onclick="playAudio('audio7')" />
             <div class="date inter-normal-black-12px">2010-9-12</div>
             <div class="text-3 text-1 inter-normal-silver-chalice-12px">00:15</div>
             <div class="date-1 date-7 inter-normal-black-12px">2010-9-20</div>
@@ -139,4 +144,3 @@
     </div>
   </body>
 </html>
-
