@@ -3,12 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=1440, maximum-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
     <meta name="og:type" content="website" />
     <meta name="twitter:card" content="photo" />
     <link rel="stylesheet" type="text/css" href="css/desktop-4.css" />
     <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
     <link rel="stylesheet" type="text/css" href="css/globals.css" />
+    <script>
+      function navigateToLastPage() {
+        window.location.href = "desktop-5.html";
+      }
+    </script>
   </head>
   <body style="margin: 0; background: #ffffff">
     <input type="hidden" id="anPageName" name="page" value="desktop-4" />
@@ -94,7 +98,7 @@
             <img class="vector-10" src="img/vector-10.svg" alt="Vector 10" />
             <div class="ellipse-20"></div>
             <img class="vector-11" src="img/vector-11.svg" alt="Vector 11" />
-            <div class="component-24 component-1">
+            <div class="component-24 component-1" onclick="navigateToLastPage()">
               <div class="overlap-group">
                 <div class="ellipse-18"></div>
                 <div class="ellipse-19"></div>
@@ -110,3 +114,4 @@
     </div>
   </body>
 </html>
+
