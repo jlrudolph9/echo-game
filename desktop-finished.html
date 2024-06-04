@@ -343,11 +343,11 @@
         </div>
         <div class="filesWindow">
             <ul>
-                <li>Random-File.txt</li>
+                <p>Random-File.txt</p>
                 <li onclick="toggleTodoPopup()">ToDo-List.txt</li>
-                <li>Other-File.txt</li>
-                <li>Another-File.txt</li>
-                <li>Text.txt</li>
+                <p>Other-File.txt</p>
+                <p>Another-File.txt</p>
+                <p>Text.txt</p>
             </ul>
         </div>
     </div>
@@ -409,16 +409,6 @@
             emailPopup.style.display = emailPopup.style.display === "none" || emailPopup.style.display === "" ? "block" : "none";
 
                 // Check if both emails have been read
-                var tristanEmailRead = sessionStorage.getItem("TristanEmail") === "1";
-                var damianEmailRead = sessionStorage.getItem("DamianEmail") === "1";
-
-                console.log(tristanEmailRead)
-                console.log(damianEmailRead)
-
-                if (tristanEmailRead && damianEmailRead) {
-                    var tombstoneIcon = document.getElementById("tombstoneIcon");
-                    tombstoneIcon.style.display = "block"; // Change this to the appropriate display value
-                }
             }
 
 
@@ -446,4 +436,3 @@
     </script>
 </body>
 </html>
-
