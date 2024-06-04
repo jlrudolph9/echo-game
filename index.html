@@ -8,6 +8,51 @@
     <link rel="stylesheet" type="text/css" href="css/desktop-2.css" />
     <link rel="stylesheet" type="text/css" href="css/styleguide.css" />
     <link rel="stylesheet" type="text/css" href="css/globals.css" />
+    <style>
+      .ellipse-1.filled {
+        background-color: black;
+      }
+    </style>
+    <script>
+      let input = "";
+
+      function handleInput(number) {
+        if (input.length < 4) {
+          input += number;
+          updateDisplay();
+          if (input.length === 4) {
+            checkPassword();
+          }
+        }
+      }
+
+      function updateDisplay() {
+        const ellipses = document.querySelectorAll(".ellipse-1");
+        for (let i = 0; i < ellipses.length; i++) {
+          if (i < input.length) {
+            ellipses[i].classList.add("filled");
+          } else {
+            ellipses[i].classList.remove("filled");
+          }
+        }
+      }
+
+      function checkPassword() {
+        if (input === "1721") {
+          alert("Password correct! Navigating to the next page...");
+          window.location.href = "nextpage.html"; // Change this to the URL of the next page
+        } else {
+          alert("Incorrect password. Try again.");
+          input = "";
+          updateDisplay();
+        }
+      }
+
+      function resetInput() {
+        input = "";
+        updateDisplay();
+      }
+    </script>
   </head>
   <body style="margin: 0; background: #ffffff">
     <input type="hidden" id="anPageName" name="page" value="desktop-2" />
@@ -24,35 +69,38 @@
               <div class="ellipse-1"></div>
             </div>
             <div class="component-container component-3">
-              <a href="#rectangle-8">
+              <a href="javascript:void(0)" onclick="handleInput('1')">
                 <div class="component"><div class="number inter-light-white-32px">1</div></div></a
-              ><a href="#rectangle-8">
+              ><a href="javascript:void(0)" onclick="handleInput('2')">
                 <div class="component-1 component-3"><div class="number inter-light-white-32px">2</div></div></a
               >
-              <div class="component-6 component-3"><div class="number inter-light-white-32px">3</div></div>
+              <a href="javascript:void(0)" onclick="handleInput('3')">
+                <div class="component-6 component-3"><div class="number inter-light-white-32px">3</div></div></a>
             </div>
             <div class="component-container-1 component-container-3">
-              <a href="#rectangle-8">
+              <a href="javascript:void(0)" onclick="handleInput('4')">
                 <div class="component-4 component-3"><div class="number inter-light-white-32px">4</div></div></a
-              ><a href="#rectangle-8">
+              ><a href="javascript:void(0)" onclick="handleInput('5')">
                 <div class="component-1 component-3"><div class="number inter-light-white-32px">5</div></div></a
-              ><a href="#rectangle-8">
+              ><a href="javascript:void(0)" onclick="handleInput('6')">
                 <div class="component-8 component-3"><div class="number inter-light-white-32px">6</div></div></a
               >
             </div>
             <div class="component-container-2 component-container-3">
-              <div class="component-9 component-3"><div class="number inter-light-white-32px">7</div></div>
-              <div class="component-11 component-3"><div class="number inter-light-white-32px">8</div></div>
-              <a href="#rectangle-8">
+              <a href="javascript:void(0)" onclick="handleInput('7')">
+                <div class="component-9 component-3"><div class="number inter-light-white-32px">7</div></div></a
+              ><a href="javascript:void(0)" onclick="handleInput('8')">
+                <div class="component-11 component-3"><div class="number inter-light-white-32px">8</div></div></a
+              ><a href="javascript:void(0)" onclick="handleInput('9')">
                 <div class="component"><div class="number inter-light-white-32px">9</div></div></a
               >
             </div>
-            <a href="#rectangle-8">
+            <a href="javascript:void(0)" onclick="handleInput('0')">
               <div class="component-2 component-3"><div class="number inter-light-white-32px">0</div></div></a
             >
             <div class="flex-row">
-              <div class="emergency">Emergency</div>
-              <div class="cancel">Cancel</div>
+              <div class="emergency" onclick="resetInput()">Emergency</div>
+              <div class="cancel" onclick="resetInput()">Cancel</div>
             </div>
           </div>
         </div>
@@ -60,3 +108,4 @@
     </div>
   </body>
 </html>
+
