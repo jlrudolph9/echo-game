@@ -1,98 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECHO</title>
     <style>
-        html, body {
-            height: 100%; /* Ensure the html and body elements cover the entire viewport height */
-            margin: 0; /* Remove default margin */
-        }
         body {
-            background-image: url('background.jpeg'); /* Use 'background.png' if your image is a PNG file */
-            background-size: cover; /* Make sure the background image covers the entire viewport */
-            background-repeat: no-repeat; /* Prevent the image from repeating */
-            background-position: center; /* Center the image */
-            display: flex; /* Use flexbox to center the content */
-            justify-content: center; /* Center content horizontally */
-            align-items: center; /* Center content vertically */
-            text-align: center; /* Center text */
-            position: relative; /* Ensure the body can position absolute elements */
-            flex-direction: column;
-        }
-        .image-container {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            overflow: hidden;
-            display: inline-block;
-        }
-        .image-container img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            object-position: center;
-        }
-        .greeting p {
-            font-family: 'Arial', sans-serif; /* Choose your desired font */
-            font-size: 24px; /* Set the desired font size */
-            color: black; /* Set the desired text color, e.g., tomato color */
-            margin-top: 20px; /* Add some space between the image and text */
-            text-transform: uppercase; /* Optional: make the text uppercase */
-            letter-spacing: 2px; /* Optional: add some letter spacing */
-        }
-        .password-input {
-            margin-top: 10px;
-        }
-        .password-input input {
-            font-size: 16px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('desk-background.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
             text-align: center;
-            color: #ccc; /* Default text color (gray) */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
-        .password-input input:focus {
-            color: #000; /* Change text color to black when focused */
+        .title {
+            font-size: 72px;
+            font-weight: bold;
+            text-shadow: 2px 2px 5px black;
+            margin-bottom: 20px;
         }
-        .error-message {
-            color: red;
-            margin-top: 10px;
-            display: none; /* Initially hide the error message */
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .menu a {
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .menu a:hover {
+            background: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 <body>
-    <div class="image-container">
-        <img src="echoGraduation.png" alt="Echo Graduation">
+    <div class="title">ECHO</div>
+    <div class="menu">
+        <a href="intro.html">Intro</a>
+        <a href="login.html">Computer</a>
+        <a href="phone.html">Phone</a>
     </div>
-    <div class="greeting">
-        <p>Echo Lee</p>
-    </div>
-    <div class="password-input">
-        <input type="password" id="password" placeholder="Password" onkeypress="checkPassword(event)">
-        <div class="error-message" id="error-message">Incorrect password</div>
-    </div>
-    <script>
-        function checkPassword(event) {
-            if (event.key === 'Enter') {
-                var password = document.getElementById('password').value;
-                var errorMessage = document.getElementById('error-message');
-                if (password.toLowerCase().includes('carnation')) {
-                    window.location.href = 'desktop.html';
-                    setSessionData();
-                } else {
-                    document.getElementById('password').value = ''; // Reset the text box
-                    errorMessage.style.display = 'block'; // Show the error message
-                }
-            }
-        }
-        
-    function setSessionData() {
-      // Set a value in sessionStorage
-      sessionStorage.setItem('TristanEmail', 0);
-      sessionStorage.setItem('DamianEmail', 0);
-    }
-    </script>
 </body>
 </html>
-
